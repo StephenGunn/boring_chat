@@ -1,0 +1,87 @@
+:root {
+  --light-bg: ghostwhite;
+  --light-color: darkslategray;
+  --light-text: #71717a;
+  --light-accent: #888;
+  --light-background-image: radial-gradient(#eee 0.5px, transparent 0.5px);
+  --dark-bg: #000;
+  --dark-text: #fff8;
+  --dark-color: ghostwhite;
+  --dark-accent: #444;
+  --dark-background-image: radial-gradient(#444 0.5px, transparent 0.5px);
+}
+
+body {
+  background: var(--background-image);
+  background-color: var(--bg);
+  color: var(--text);
+  background-size: 10px 10px;
+  font-family: 'Trebuchet MS', 'Arial', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color);
+}
+
+.light-theme {
+  --bg: var(--light-bg);
+  --color: var(--light-color);
+  --text: var(--light-text);
+  --accent: var(--light-accent);
+  --background-image: var(--light-background-image);
+}
+
+.dark-theme {
+  --bg: var(--dark-bg);
+  --color: var(--dark-color);
+  --text: var(--dark-text);
+  --accent: var(--dark-accent);
+  --background-image: var(--dark-background-image);
+}
+
+/* Automatically apply system preference */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: var(--dark-bg);
+    --color: var(--dark-color);
+    --text: var(--dark-text);
+    --accent: var(--dark-accent);
+    --background-image: var(--dark-background-image);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: var(--light-bg);
+    --color: var(--light-color);
+    --text: var(--light-text);
+    --accent: var(--light-accent);
+    --background-image: var(--light-background-image);
+  }
+}
+
+.stuff {
+  border: 1px solid var(--accent);
+  background: var(--bg);
+  border-radius: 0.5rem;
+}
+
+.stuff_bar {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--color);
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--accent);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.box {
+  padding: 1rem;
+}
