@@ -13,5 +13,6 @@
     place-content: center;
     height: 100vh;
     width: 100vw;
+    padding: 1rem;
   }
 </style>

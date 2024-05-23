@@ -30,6 +30,12 @@ The server will also be responsible for maintaining the state of the chat applic
 
 Beyond that, the languages and frameworks will determine the specifics of the backend.
 
+### Containerization
+
+I hope to provide a docker container for each backend so that you can easily run the server on your machine.
+
+I'm not sure if I will containerize the frontend.
+
 ## Languages/Frameworks
 
 ### Completed
@@ -44,3 +50,6 @@ Beyond that, the languages and frameworks will determine the specifics of the ba
 - [ ] Go (Gorilla)
 - [ ] Python (FastAPI)
 - [ ] Ruby?
+- [ ] Elixer?
+- [ ] Gleam?
+- [ ] Roc?

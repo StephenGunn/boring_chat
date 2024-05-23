@@ -3,7 +3,7 @@
   --light-color: darkslategray;
   --light-text: #71717a;
   --light-accent: #888;
-  --light-background-image: radial-gradient(#eee 0.5px, transparent 0.5px);
+  --light-background-image: radial-gradient(#888 0.5px, transparent 0.5px);
   --dark-bg: #000;
   --dark-text: #fff8;
   --dark-color: ghostwhite;
@@ -28,7 +28,7 @@ h6 {
   color: var(--color);
 }
 
-.light-theme {
+.light {
   --bg: var(--light-bg);
   --color: var(--light-color);
   --text: var(--light-text);
@@ -36,7 +36,7 @@ h6 {
   --background-image: var(--light-background-image);
 }
 
-.dark-theme {
+.dark {
   --bg: var(--dark-bg);
   --color: var(--dark-color);
   --text: var(--dark-text);
@@ -84,4 +84,53 @@ h6 {
 
 .box {
   padding: 1rem;
+}
+
+.title {
+  font-weight: bold;
+  color: var(--color);
+}
+
+/* LINKS */
+
+a {
+  color: var(--color);
+}
+
+/* FORMS */
+input {
+  padding: 0.6rem 0.5rem 0.3rem 0.5rem;
+  border: 1px solid var(--accent);
+  border-radius: 0.25rem;
+  background: var(--bg);
+  color: var(--color);
+  width: 100%;
+  font-size: 0.9rem;
+  height: 2rem;
+  line-height: 2rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--color);
+}
+
+button {
+  padding: 0.6rem 1rem 0.3rem 1rem;
+  height: 2rem;
+  line-height: 2rem;
+  border: 1px solid var(--accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  background: var(--bg);
+  color: var(--color);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
