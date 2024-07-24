@@ -1,21 +1,20 @@
 export class Room {
   users: User[] = $state([]);
   messages: Message[] = $state([]);
-  id: string = $state('');
   name: string = $state('');
 
-  constructor(id: string, name: string) {
-    this.id = id;
+  constructor(name: string) {
     this.name = name;
   }
 
-  // Manage the state
-  add_user(user: User) {
-    this.users.push(user);
+  inject_data(data: RoomData) {
+    this.users = data.users;
+    this.messages = data.messages;
+    this.name = data.name;
   }
 
-  remove_user(user: User) {
-    this.users = this.users.filter((u) => u.id !== user.id);
+  update_user_list(users: User[]) {
+    this.users = users;
   }
 
   add_message(message: Message) {
@@ -35,13 +34,9 @@ export class Room {
     return this.users.length;
   }
 
-  get_id() {
-    return this.id;
-  }
-
   get_name() {
     return this.name;
   }
 }
 
-export const current_room = new Room('welcome', 'Welcome');
+export const current_room = new Room('welcome');

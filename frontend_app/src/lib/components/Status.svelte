@@ -1,13 +1,13 @@
 <script lang="ts">
-  let connected: boolean = false;
+  import { connection } from '$lib/connection.svelte.js';
 </script>
 
 <div class="status">
-  {#if !connected}
+  {#if !connection.is_connected()}
     Not
   {/if}
   Connected
-  <div class="circle" class:connected></div>
+  <div class="circle" class:connected={connection.is_connected()}></div>
 </div>
 
 <style>

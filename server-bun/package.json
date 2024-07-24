@@ -1,7 +1,10 @@
 {
   "name": "server-bun",
-  "module": "src/index.ts",
+  "module": "./index.ts",
   "type": "module",
+  "scripts": {
+    "start": "bun --watch --port=5556 ./index.ts"
+  },
   "devDependencies": {
     "@types/bun": "^1.1.3",
     "@typescript-eslint/eslint-plugin": "^7.10.0",

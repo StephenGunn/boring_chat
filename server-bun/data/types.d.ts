@@ -1,24 +1,24 @@
-type User = {
+export type User = {
   id: string;
   joined_at: number;
   name?: string;
   room?: string;
 };
 
-type Message = {
+export type Message = {
   id: string;
   user: User;
   timestamp: number;
   content: string;
 };
 
-type RoomData = {
-  users: User[]; // user.id -> user
+export type Room = {
+  users: Map<string, User>;
   messages: Message[];
   name: string;
 };
 
-type IncomingMessage = {
-  type: string;
-  data: Message;
+export type ConsoleMessage = {
+  timestamp: number;
+  content: string;
 };

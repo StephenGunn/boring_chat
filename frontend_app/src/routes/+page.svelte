@@ -1,21 +1,21 @@
 <script lang="ts">
   import Status from '$lib/components/Status.svelte';
-  import { current_user } from '$lib/data/user.svelte';
-  import { user_list } from '$lib/data/user_list.svelte';
+  import { connection } from '$lib/connection.svelte.js';
   import { goto } from '$app/navigation';
 
+  // this holds the local state of the input, the users
+  // full data-set is stored in the connection class
   let username = $state('');
 
   const enter_chat = (e: Event) => {
     e.preventDefault();
+    // set the username locally and on the server
+    connection.set_user_name(username);
 
-    // create a randomized 10 letter string
-    const id: string = Math.random().toString(36).substring(2, 12);
-    current_user.set_new_user(id, username);
+    // add the user to the welcome room, which exists by default on the server
+    connection.add_user_to_room('welcome');
 
-    // add the user to the list of users
-    user_list.add_user(current_user.get_user());
-
+    // navigate to the chat route, which holds the #welcome room
     goto('/chat');
   };
 </script>
@@ -45,7 +45,11 @@
         minlength="3"
         maxlength="8"
       />
-      <button disabled={username.length < 3}>Enter Chat</button>
+      {#if connection.is_reconnecting()}
+        <div class="reconnecting">Trying to connect to the server...</div>
+      {:else if connection.is_connected()}
+        <button disabled={username.length < 3}>Enter Chat</button>
+      {/if}
     </form>
     <div class="links">
       <a href="https://github.com/StephenGunn/boring_chat" target="_blank" rel="norefferer noopener"
@@ -56,6 +60,11 @@
 </div>
 
 <style>
+  .reconnecting {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.4rem;
+    display: inline-block;
+  }
   .login {
     width: 100%;
     max-width: 500px;

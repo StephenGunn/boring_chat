@@ -4,16 +4,13 @@
   import ModeToggle from '$lib/components/ModeToggle.svelte';
   import UserList from '$lib/components/UserList.svelte';
 
-  import { current_user } from '$lib/data/user.svelte';
-  import { onMount } from 'svelte';
+  import { connection } from '$lib/connection.svelte.js';
   import { goto } from '$app/navigation';
 
-  onMount(() => {
-    // check to make sure we have a user- if we don't redirect to the login page
-    if (!current_user.get_user().id) {
-      goto('/');
-    }
-  });
+  // check to make sure we have a user- if we don't redirect to the login page
+  if (!connection.get_user()?.name) {
+    goto('/');
+  }
 </script>
 
 <svelte:head>
